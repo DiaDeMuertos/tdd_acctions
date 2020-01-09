@@ -1,8 +1,11 @@
-on: push
+on: [push]
+
 name: Ejecutar test en cada push
+
 jobs:
-  tests:
+  build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Clonar y checkout de la rama actual
         uses: actions/checkout@v1
