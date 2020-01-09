@@ -12,4 +12,4 @@ jobs:
       - name: Instalar dependecias
         run: npm install
       - name: Ejecutar test
-        run: export CI=false;npm test
+        run: export CI=true;npm test
