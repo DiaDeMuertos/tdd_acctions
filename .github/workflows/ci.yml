@@ -1,0 +1,13 @@
+on: [push]
+
+name: Ejecutar test en cada push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clonar y checkout de la rama actual
+        uses: actions/checkout@v1
+      - name: Instalar dependecias
+        uses: npm install
