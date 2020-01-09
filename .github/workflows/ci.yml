@@ -11,3 +11,5 @@ jobs:
         uses: actions/checkout@v1
       - name: Instalar dependecias
         run: npm install
+      - name: Ejecutar test
+        run: export CI=false;npm test
