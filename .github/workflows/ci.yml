@@ -10,4 +10,4 @@ jobs:
       - name: Clonar y checkout de la rama actual
         uses: actions/checkout@v1
       - name: Instalar dependecias
-        uses: npm install
+        run: npm install
