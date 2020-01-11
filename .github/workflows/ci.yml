@@ -8,7 +8,7 @@ name: Ejecutar test en cada push
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:  
+    env:
       DOCKER_HUB: ${{secrets.DOCKER_HUB}}
       DOCKER_HUB_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
 
@@ -19,3 +19,8 @@ jobs:
         run: npm install
       - name: Ejecutar test
         run: npm test
+      - name: echos
+        run: |
+          echo "Docker hub data"
+          echo $DOCKER_HUB
+          echo $DOCKER_HUB_PASSWORD
