@@ -9,8 +9,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:  
-      DOCKER_HUB: ${{secret.DOCKER_HUB}}
-      DOCKER_HUB_PASSWORD: ${{secret.DOCKER_HUB_PASSWORD}}
+      DOCKER_HUB: ${{secrets.DOCKER_HUB}}
+      DOCKER_HUB_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
 
     steps:
       - name: Clonar y checkout de la rama actual
