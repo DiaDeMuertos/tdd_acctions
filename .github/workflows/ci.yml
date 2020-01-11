@@ -1,6 +1,7 @@
-on: [push]
-  branches:
-    - develop
+on:
+  push:
+    branches:
+      - develop
 
 name: Ejecutar test en cada push
 
