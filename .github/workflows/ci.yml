@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Clonar y checkout de la rama actual
         uses: actions/checkout@v1
-      - name: Instalar dependecias
-        run: npm install
       - name: Ejecutar test
         run: npm test
+      - name: Instalar dependecias
+        run: npm install
