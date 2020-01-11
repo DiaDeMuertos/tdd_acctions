@@ -19,7 +19,7 @@ jobs:
         run: npm install
       - name: Ejecutar test
         run: npm test
-      - name: echos
-        run: 
-          echo $DOCKER_HUB
-          docker login -u $DOCKER_HUB -p $DOCKER_HUB_PASSWORD
+      - name: Crear image
+        run: docker build . -t diademuertos/tdd_acctions:latest
+      - name: Docker hub login
+        run: docker login -u $DOCKER_HUB -p $DOCKER_HUB_PASSWORD
