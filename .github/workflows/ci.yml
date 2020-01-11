@@ -20,7 +20,6 @@ jobs:
       - name: Ejecutar test
         run: npm test
       - name: echos
-        run: |
-          echo "Docker hub data"
+        run: 
           echo $DOCKER_HUB
-          echo $DOCKER_HUB_PASSWORD
+          docker login -u $DOCKER_HUB -p $DOCKER_HUB_PASSWORD
