@@ -8,11 +8,14 @@ name: Ejecutar test en cada push
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:  
+      DOCKER_HUB: ${{secret.DOCKER_HUB}}
+      DOCKER_HUB_PASSWORD: ${{secret.DOCKER_HUB_PASSWORD}}
 
     steps:
       - name: Clonar y checkout de la rama actual
         uses: actions/checkout@v1
-      - name: Ejecutar test
-        run: npm test
       - name: Instalar dependecias
         run: npm install
+      - name: Ejecutar test
+        run: npm test
