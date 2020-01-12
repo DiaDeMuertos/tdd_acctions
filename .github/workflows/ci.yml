@@ -27,7 +27,7 @@ jobs:
       - name: push image to docker hub repository
         run: docker push diademuertos/tdd_acctions:$VERSION
       - name: if test
-        if: github.ref == 'master'
+        if: github.ref == 'develop'
         run: DONE
       - name: github.ref
-        run: echo github.ref
+        run: echo ${{github.ref}}
