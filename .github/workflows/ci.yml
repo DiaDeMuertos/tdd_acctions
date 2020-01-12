@@ -24,12 +24,14 @@ jobs:
         run: npm test
       - name: build dev image
         if: contains(github.ref, 'develop')
-        run: export VERSION=$VERSION_DEV
-        run: docker build . -t diademuertos/tdd_acctions:$VERSION
+        run: |
+          export VERSION=$VERSION_DEV
+          docker build . -t diademuertos/tdd_acctions:$VERSION
       - name: build pro image
         if: contains(github.ref, 'master')
-        run: export VERSION=$VERSION_PRO
-        run: docker build . -t diademuertos/tdd_acctions:$VERSION
+        run: |
+          export VERSION=$VERSION_PRO
+          docker build . -t diademuertos/tdd_acctions:$VERSION
       - name: login docker hub
         run: docker login -u $DOCKER_HUB -p $DOCKER_HUB_PASSWORD
       - name: push image to docker hub repository
