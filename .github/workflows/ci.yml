@@ -3,7 +3,7 @@ on:
     branches:
       - develop
 
-name: Ejecutar test en cada push
+name: Just develop and every push
 
 jobs:
   build:
@@ -14,15 +14,15 @@ jobs:
       VERSION: 'dev'
 
     steps:
-      - name: Clonar y checkout de la rama actual
+      - name: clone and checkout
         uses: actions/checkout@v1
-      - name: Instalar dependecias
+      - name: install dependencies
         run: npm install
-      - name: Ejecutar test
+      - name: run test
         run: npm test
-      - name: Crear image
-        run: docker build . -t diademuertos/tdd_acctions:latest
-      - name: Docker hub login
+      - name: build image
+        run: docker build . -t diademuertos/tdd_acctions:${{VERSION}}
+      - name: login docker hub
         run: docker login -u $DOCKER_HUB -p $DOCKER_HUB_PASSWORD
-      - name:
-        run: docker push diademuertos/tdd_acctions:latest
+      - name: push image to docker hub repository
+        run: docker push diademuertos/tdd_acctions:${{VERSION}}
