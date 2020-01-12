@@ -1,13 +1,53 @@
+<<<<<<< HEAD
 on: [push]
 
 name: Ejecutar test en cada push
+=======
+on:
+  push:
+    branches:
+      - develop
+      - master
+
+name: Just develop and every push
+>>>>>>> release/0.1.0
 
 jobs:
   build:
     runs-on: ubuntu-latest
+<<<<<<< HEAD
 
     steps:
       - name: Clonar y checkout de la rama actual
         uses: actions/checkout@v1
       - name: Instalar dependecias
         uses: npm install
+=======
+    env:
+      DOCKER_HUB: ${{secrets.DOCKER_HUB}}
+      DOCKER_HUB_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
+      VERSION_DEV: 'dev'
+      VERSION_PRO: 'latest'
+
+    steps:
+      - name: clone and checkout
+        uses: actions/checkout@v1
+      - name: install dependencies
+        run: npm install
+      - name: run test
+        run: npm test
+      - name: build dev image
+        if: contains(github.ref, 'develop')
+        run: |
+          export VERSION=$VERSION_DEV
+          docker build . -t diademuertos/tdd_acctions:$VERSION
+      - name: build pro image
+        if: contains(github.ref, 'master')
+        run: |
+          export VERSION=$VERSION_PRO
+          docker build . -t diademuertos/tdd_acctions:$VERSION
+      - name: login docker hub
+        run: docker login -u $DOCKER_HUB -p $DOCKER_HUB_PASSWORD
+      - name: push image to docker hub repository
+        run: docker push diademuertos/tdd_acctions
+>>>>>>> release/0.1.0
