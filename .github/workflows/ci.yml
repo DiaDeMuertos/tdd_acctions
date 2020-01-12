@@ -11,6 +11,7 @@ jobs:
     env:
       DOCKER_HUB: ${{secrets.DOCKER_HUB}}
       DOCKER_HUB_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
+      VERSION: 'dev'
 
     steps:
       - name: Clonar y checkout de la rama actual
@@ -23,3 +24,5 @@ jobs:
         run: docker build . -t diademuertos/tdd_acctions:latest
       - name: Docker hub login
         run: docker login -u $DOCKER_HUB -p $DOCKER_HUB_PASSWORD
+      - name:
+        run: docker push diademuertos/tdd_acctions:latest
