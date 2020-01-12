@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-on: [push]
-
-name: Ejecutar test en cada push
-=======
 on:
   push:
     branches:
@@ -10,19 +5,10 @@ on:
       - master
 
 name: Just develop and every push
->>>>>>> release/0.1.0
 
 jobs:
   build:
     runs-on: ubuntu-latest
-<<<<<<< HEAD
-
-    steps:
-      - name: Clonar y checkout de la rama actual
-        uses: actions/checkout@v1
-      - name: Instalar dependecias
-        uses: npm install
-=======
     env:
       DOCKER_HUB: ${{secrets.DOCKER_HUB}}
       DOCKER_HUB_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
@@ -50,4 +36,3 @@ jobs:
         run: docker login -u $DOCKER_HUB -p $DOCKER_HUB_PASSWORD
       - name: push image to docker hub repository
         run: docker push diademuertos/tdd_acctions
->>>>>>> release/0.1.0
