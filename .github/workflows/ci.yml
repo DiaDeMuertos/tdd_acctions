@@ -43,3 +43,28 @@ jobs:
         with:
           name: greeting
           path: greeting.txt
+  job1:
+    name: create file
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: create
+        run: echo 8 + 1 > output.txt
+      - name: upload
+        uses: actions/upload-artifact@v1
+        with:
+          name: output
+          path: output.txt
+
+  job2:
+    name: display file
+    needs: job1
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: download
+        uses: actions/download-artifact@v1
+        with:
+          name: output
+      - name: display
+        run: cat output.txt
