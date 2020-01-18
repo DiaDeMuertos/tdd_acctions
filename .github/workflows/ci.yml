@@ -67,4 +67,4 @@ jobs:
         with:
           name: output
       - name: display
-        run: ls -l
+        run: cat output/output.txt
