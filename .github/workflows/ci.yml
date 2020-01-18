@@ -67,4 +67,4 @@ jobs:
         with:
           name: output
       - name: display
-        run: cat output.txt
+        run: cat upload/output.txt
