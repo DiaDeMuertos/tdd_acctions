@@ -9,7 +9,9 @@ name: Just develop and every push
 jobs:
   build:
     runs-on: ubuntu-latest
-    node-version: '8.10.0'
+    strategy:
+      matrix:
+        node-version: ['8.10.0']
     env:
       DOCKER_HUB: ${{secrets.DOCKER_HUB}}
       DOCKER_HUB_PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
